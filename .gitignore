@@ -5,6 +5,7 @@
 .gradle
 
 # Build output directies
+target
 /target
 */target
 */**/target
@@ -20,12 +21,22 @@ out
 *.iml
 atlassian-ide-plugin.xml
 
+#Jave
+*.class
+
+#Package Files
+*.jar
+*.war
+*.ear
+
+
 # Eclipse specific files/directories
 .classpath
 .project
 .settings
 .metadata
 bin
+
 
 # NetBeans specific files/directories
 .nbattrs
