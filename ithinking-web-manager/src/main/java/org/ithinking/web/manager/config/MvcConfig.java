@@ -1,7 +1,7 @@
 package org.ithinking.web.manager.config;
 
 import org.apache.log4j.Logger;
-import org.ithinking.spring.tengine.HtmlResourceViewResolver;
+import org.ithinking.spring.tengine.TengineViewResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
@@ -25,7 +25,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");  
         return viewResolver;  */
         
-        HtmlResourceViewResolver viewResolver = new HtmlResourceViewResolver();  
+        TengineViewResolver viewResolver = new TengineViewResolver();  
         viewResolver.setPrefix("/WEB-INF/views/");  
         viewResolver.setSuffix(".html");  
         return viewResolver;  
