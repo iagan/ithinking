@@ -12,4 +12,9 @@ public class AdminController {
 	public String home() {
 		return "Hello World!";
 	}
+	
+	@RequestMapping("/index2")
+	public String index(){
+		return "/index";
+	}
 }
