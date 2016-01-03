@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.core.Ordered;
 import org.springframework.util.PatternMatchUtils;
 import org.springframework.web.servlet.View;
@@ -111,8 +110,13 @@ public class TengineViewResolver extends AbstractCachingViewResolver implements 
 
 	@Override
 	protected View loadView(String viewName, Locale locale) throws Exception {
-		final AutowireCapableBeanFactory beanFactory = getApplicationContext().getAutowireCapableBeanFactory();
-		return null;
+		//final AutowireCapableBeanFactory beanFactory = getApplicationContext().getAutowireCapableBeanFactory();
+		TengineView view = new TengineView(viewName);
+		view.setPrefix(this.getPrefix());
+		view.setSuffix(this.getSuffix());
+		view.setApplicationContext(this.getApplicationContext());
+		view.setServletContext(this.getServletContext());
+		return view;
 	}
 
 }

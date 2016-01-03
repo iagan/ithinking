@@ -13,7 +13,7 @@ public class HtmlParser implements Parser {
 		scanner.setHandler(handler);
 		scanner.start();
 		Document doc = handler.getRootBlock();
-		return new Template(doc);
+		return new Template(doc, text);
 	}
 
 }
