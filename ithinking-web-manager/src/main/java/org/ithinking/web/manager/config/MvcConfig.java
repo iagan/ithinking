@@ -40,7 +40,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		//registry.addResourceHandler("/**").addResourceLocations("/");
 		//registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/views/");
-		registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+		registry.addResourceHandler("/**").addResourceLocations("/");
 	}
 	
 	
