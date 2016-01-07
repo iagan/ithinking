@@ -1,5 +1,6 @@
 package org.ithinking.tengine;
 
+import org.ithinking.tengine.core.Resource;
 import org.ithinking.tengine.loader.ClasspathLoader;
 import org.ithinking.tengine.sql.SQLParser;
 import org.junit.Test;
@@ -10,7 +11,7 @@ public class SqlTengineTest {
 	public void test() {
 		SQLParser parser = new SQLParser();
 		ClasspathLoader cl = new ClasspathLoader(null);
-		String sqlText = cl.getTemplate("user.sql");
-		parser.parse(sqlText);
+		Resource res = cl.load("user.sql");
+		parser.parse(res.getText());
 	}
 }

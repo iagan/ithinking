@@ -1,14 +1,15 @@
 package org.ithinking.tengine.sql;
 
+import org.ithinking.tengine.core.Resource;
 import org.ithinking.tengine.loader.ClasspathLoader;
 
 public class SQLParser {
 	
 	public static void main(String[] args){
 		ClasspathLoader cl = new ClasspathLoader(null);
-		String sqlText = cl.getTemplate("user.sql");
+		Resource res = cl.load("user.sql");
 		SQLParser p = new SQLParser();
-		p.parse(sqlText);
+		p.parse(res.getText());
 	}
 
 	public void parse(String text){

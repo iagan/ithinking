@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 
 import org.ithinking.tengine.core.Configuration;
+import org.ithinking.tengine.core.Resource;
 
 public class ClasspathLoader extends AbstractLoader {
 
@@ -14,15 +15,31 @@ public class ClasspathLoader extends AbstractLoader {
 		this.conf = conf;
 	}
 
-	public String getTemplate(String templateId) {
+	public Resource load(String templateId) {
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		URL url = classLoader.getResource("");
-		String text = "";
+		Resource res = null;
 		if (url.getProtocol().equals("file")) {
 			File file = new File(url.getFile() + "/" + templateId);
-			text = this.getTemplate(file);
+			String text = this.load(file);
+			res = new Resource();
+			res.setId(templateId);
+			res.setText(text);
+			res.setPath(file.getAbsolutePath());
+			res.setLastModified(file.lastModified());
 		}
-		return text;
+		return res;
+	}
+
+	@Override
+	public boolean isModified(String templateId, long lastModified) {
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		URL url = classLoader.getResource("");
+		if (url.getProtocol().equals("file")) {
+			File file = new File(url.getFile() + "/" + templateId);
+			return file.lastModified() != lastModified;
+		}
+		return false;
 	}
 
 }

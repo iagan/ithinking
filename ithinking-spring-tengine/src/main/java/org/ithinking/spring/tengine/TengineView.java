@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.ithinking.tengine.core.Configuration;
 import org.ithinking.tengine.core.Loader;
-import org.ithinking.tengine.core.Parser;
 import org.ithinking.tengine.core.Template;
 import org.ithinking.tengine.core.TemplateManager;
 import org.ithinking.tengine.html.parser.HtmlParser;
@@ -48,7 +47,7 @@ public class TengineView extends AbstractTengineView {
 			loader = new WebinfoLoader(path);
 		}
 		
-		Parser parser = new HtmlParser();
+		HtmlParser parser = new HtmlParser();
 		TemplateManager manager = new TemplateManager(loader, conf, parser);
 		
 		Template template = manager.getTemplate(templateName + suffix);
@@ -62,6 +61,9 @@ public class TengineView extends AbstractTengineView {
 		//Context context = new WebContext(model, request, response);
 		if(template == null){
 			template = this.loadTemplate();
+		}
+		if(template.isModified()){
+			template.reload();
 		}
 		response.getWriter().print(template.getText());
 		//template.render(context);

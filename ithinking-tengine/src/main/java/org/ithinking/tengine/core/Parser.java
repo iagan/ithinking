@@ -1,6 +1,6 @@
 package org.ithinking.tengine.core;
 
-public interface Parser {
+public interface Parser<T> {
 	
-	public Template parse(String text);
+	public T parse(String text);
 }

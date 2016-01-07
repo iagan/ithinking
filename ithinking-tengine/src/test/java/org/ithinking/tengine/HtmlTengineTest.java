@@ -5,9 +5,8 @@ import java.util.List;
 
 import org.ithinking.tengine.core.Configuration;
 import org.ithinking.tengine.core.Context;
-import org.ithinking.tengine.core.Template;
 import org.ithinking.tengine.core.Loader;
-import org.ithinking.tengine.core.Parser;
+import org.ithinking.tengine.core.Template;
 import org.ithinking.tengine.core.TemplateManager;
 import org.ithinking.tengine.html.parser.HtmlParser;
 import org.ithinking.tengine.loader.ClasspathLoader;
@@ -23,7 +22,7 @@ public class HtmlTengineTest {
 	public void test() {
 		Configuration conf = new Configuration();
 		Loader loader = new ClasspathLoader(conf);
-		Parser parser = new HtmlParser();
+		HtmlParser parser = new HtmlParser();
 		//
 		User admin = new User("admin", 10, "admin@126.com", "甘肃兰州");
 

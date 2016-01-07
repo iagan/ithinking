@@ -11,7 +11,7 @@ import org.ithinking.tengine.core.Loader;
 
 public abstract class AbstractLoader implements Loader {
 
-	public String getTemplate(File file) {
+	public String load(File file) {
 		StringBuilder sb = new StringBuilder();
 		if (file.exists()) {
 			InputStream ins = null;
